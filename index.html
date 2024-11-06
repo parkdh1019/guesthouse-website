@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게스트하우스 예약</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>게스트하우스에 오신 것을 환영합니다!</h1>
+    </header>
+    <main>
+        <section id="rooms">
+            <h2>객실 정보</h2>
+            <div class="room-card">
+                <img src="room1.jpg" alt="객실 1" width="300">
+                <h3>스탠다드 룸</h3> 2인 기준.</p>
+                <p><strong>가격: 50,000원/박</strong></p>
+            </div>
+            <div class="room-card">
+                <img src="room2.jpg" alt="객실 2" width="300">
+                <h3>디럭스 룸</h3>
+                <p>넓고 고급스러운 디럭스 룸입니다. 4인 기준.</p>
+                <p><strong>가격: 80,000원/박</strong></p>
+            </div>
+        </section>
+        
+        <section id="booking">
+            <h2>예약하기</h2>
+        <form action="/reserve" method="post">
+            <label for="checkin">체크인 날짜:</label>
+            <input type="date" id="checkin" name="checkin">
+            <label for="checkout">체크아웃 날짜:</label>
+            <input type="date" id="checkout" name="checkout">
+            <button type="submit">예약 요청</button>
+        </form>
+
+
+        <section id="delete-booking">
+            <h2>예약 삭제하기</h2>
+            <form action="/delete" method="post">
+                <label for="deleteReservationId">예약 번호:</label>
+                <input type="number" id="deleteReservationId" name="deleteReservationId" required>
+                <button type="submit">예약 삭제</button>
+            </form>
+        </section>
+
+
+        
+            <button onclick="checkAvailability()">예약 가능 여부 확인</button>
+        </section>
+
+        <section id="modify-booking">
+            <h2>예약 수정하기</h2>
+            <form action="/modify" method="post">
+                <label for="reservationId">예약 번호:</label>
+                <input type="number" id="reservationId" name="reservationId" required>
+                <label for="newCheckin">새 체크인 날짜:</label>
+                <input type="date" id="newCheckin" name="newCheckin" required>
+                <label for="newCheckout">새 체크아웃 날짜:</label>
+                <input type="date" id="newCheckout" name="newCheckout" required>
+                <button type="submit">예약 수정</button>
+            </form>
+        </section>
+
+
+
+
+
+    <script>
+        function checkAvailability() {
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+
+        if (checkin && checkout) {
+        alert(`체크인: ${checkin}, 체크아웃: ${checkout}\n예약 가능 여부를 확인 중입니다.`);
+        } else {
+        alert("체크인 및 체크아웃 날짜를 선택해 주세요.");
+        }
+        }
+    </script>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 게스트하우스</p>
+    </footer>
+</body>
+</html>
